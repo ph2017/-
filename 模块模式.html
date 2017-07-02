@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模块模式</title>
+</head>
+
+<body>
+    模块模式
+</body>
+<script>
+    var People = (function() {
+        var name = 'hello';
+
+        function sayName() {
+            console.log('my name is ' + name);
+        }
+
+        //模块模式，就是利用函数作用域，通过返回对象来暴露能访问的方法
+        return {
+            name: name,
+            sayName: sayName,
+        }
+    })();
+
+    People.name = 'jack';
+    People.sayName();
+</script>
+
+</html>

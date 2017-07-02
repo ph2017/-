@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>混合模式</title>
+</head>
+
+<body>
+    混合模式
+</body>
+<script>
+    function People(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    People.prototype.sayMyName = function() {
+        console.log('my name is ' + this.name);
+    }
+
+    //混合模式常用于实现继承
+    //Student继承People
+    function Student(name, age, major) {
+        People.call(this);
+        this.major = major;
+    }
+    //继承People的prototype
+    Student.prototype = Object.create(People.prototype);
+    Student.prototype.constructor = Student;
+    Student.prototype.myMajor = function() {
+        console.log('my major is ' + this.major);
+    }
+
+    var tom = new Student('tom', '11', 'run');
+    tom.sayMyName();
+    tom.myMajor();
+</script>
+
+</html>
